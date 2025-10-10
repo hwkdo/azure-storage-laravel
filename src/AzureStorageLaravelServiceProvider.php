@@ -4,7 +4,6 @@ namespace Hwkdo\AzureStorageLaravel;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Hwkdo\AzureStorageLaravel\Commands\AzureStorageLaravelCommand;
 
 class AzureStorageLaravelServiceProvider extends PackageServiceProvider
 {
@@ -18,8 +17,13 @@ class AzureStorageLaravelServiceProvider extends PackageServiceProvider
         $package
             ->name('azure-storage-laravel')
             ->hasConfigFile()
-            #->hasViews()
-            #->hasCommand(AzureStorageLaravelCommand::class)
-            ->hasMigration('create_azure_storage_laravel_table');            
+            ->hasMigration('create_azure_storage_laravel_table');
+    }
+
+    public function packageRegistered(): void
+    {
+        $this->app->singleton(AzureStorageLaravel::class, function ($app) {
+            return new AzureStorageLaravel;
+        });
     }
 }

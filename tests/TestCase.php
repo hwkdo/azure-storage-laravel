@@ -2,9 +2,9 @@
 
 namespace Hwkdo\AzureStorageLaravel\Tests;
 
+use Hwkdo\AzureStorageLaravel\AzureStorageLaravelServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Hwkdo\AzureStorageLaravel\AzureStorageLaravelServiceProvider;
 
 class TestCase extends Orchestra
 {
